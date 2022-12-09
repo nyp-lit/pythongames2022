@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Hunt the Wumpus</title>
+
+        <meta charset="utf-8"/>
+        
+        <!--CSS-->
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/main.css') }}">
+        
+        <!--JQuery-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+        <!--Icons with js-->
+        <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    </head>
+    <body>
+
+        <div class='header'>
+            <a href='/'><h2>Hunt the Wumpus</h2></a>
+        </div>
+        
+        {% block content %}
+        {% endblock %}
+
+        <!--<div class='bottom'>
+            <p>Created by <em>Samuel Santos</em>, 2022</p>
+        </div>-->
+    </body>
+</html>
