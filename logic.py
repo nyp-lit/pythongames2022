@@ -5,9 +5,9 @@ from copy import deepcopy
 # Step 2: Create a Game class
 class Game:
     # Inialize the player, computer and board
-    def __init__(self, player = 'o', computer = 'x'):
-        self.player = player
-        self.computer = computer
+    def __init__(self, player_one = 'o', player_two = 'x'):
+        self.player_one = player_one
+        self.player_two = player_two
         self.board = [' ',' ',' ',' ',' ',' ',' ',' ',' ']
         
     # Returns a copy of the board to experiment on
@@ -30,7 +30,7 @@ class Game:
         return moves
     
     # Returns true if the board is full
-    def is_board_full():
+    def is_board_full(self):
         for i in range(0, len(self.board)):
             if (self.board[i] == ' '):
                 return False
@@ -77,12 +77,12 @@ class Easy(Game):
         # Check for winning move
         for move in moves:
             board_copy = self.board_copy()
-            board_copy[move] = self.computer
-            if (self.has_won(board_copy,self.computer)):
+            board_copy[move] = self.player_two
+            if (self.has_won(board_copy,self.player_two)):
                 return move
             
         # Return a random move
-        return random.choice(moves)
+        # return random.choice(moves)
 
 # Step 4: Create Medium class for Medium mode
 # Medium bot
@@ -100,19 +100,19 @@ class Medium(Game):
         # Check for winning move
         for move in moves:
             board_copy = self.board_copy()
-            board_copy[move] = self.computer
-            if (self.has_won(board_copy,self.computer)):
+            board_copy[move] = self.player_two
+            if (self.has_won(board_copy,self.player_two)):
                 return move
             
         # Check if opponent can win next turn and block that move
         for move in moves:
             board_copy = self.board_copy()
-            board_copy[move] = self.player
-            if(self.has_won(board_copy,self.player)):
+            board_copy[move] = self.player_one
+            if(self.has_won(board_copy,self.player_one)):
                 return move
 
         # Return a random move
-        return random.choice(moves)
+        # return random.choice(moves)
 
 # Step 6: Create Hard class for Hard mode
 # Hard bot
@@ -130,31 +130,31 @@ class Hard(Game):
         # Check for winning move
         for move in moves:
             board_copy = self.board_copy()
-            board_copy[move] = self.computer
-            if (self.has_won(board_copy,self.computer)):
+            board_copy[move] = self.player_two
+            if (self.has_won(board_copy,self.player_two)):
                 return move
             
         # Check if opponent can win next turn and block that move
         for move in moves:
             board_copy = self.board_copy()
-            board_copy[move] = self.player
-            if(self.has_won(board_copy,self.player)):
+            board_copy[move] = self.player_one
+            if(self.has_won(board_copy,self.player_one)):
                 return move
             
-        corners = [0,2,6,8]
-        middle = [4]
-        other = [1,3,5,7]
+        # corners = [0,2,6,8]
+        # middle = [4]
+        # other = [1,3,5,7]
         
-        # Choose corners if possible
-        moveset = list(set(corners).intersection(set(moves)))
-        if (len(moveset) != 0):
-            return random.choice(moveset)
+        # # Choose corners if possible
+        # moveset = list(set(corners).intersection(set(moves)))
+        # if (len(moveset) != 0):
+        #     return random.choice(moveset)
         
-        # Choose middle cell if corners are taken
-        moveset = list(set(middle).intersection(set(moves)))
-        if (len(moveset) != 0):
-            return random.choice(moveset)
+        # # Choose middle cell if corners are taken
+        # moveset = list(set(middle).intersection(set(moves)))
+        # if (len(moveset) != 0):
+        #     return random.choice(moveset)
         
-        # Make a choice from one of the remaining cells.
-        moveset = list(set(other).intersection(set(moves)))
-        return random.choice(moveset)
+        # # Make a choice from one of the remaining cells.
+        # moveset = list(set(other).intersection(set(moves)))
+        # return random.choice(moveset)

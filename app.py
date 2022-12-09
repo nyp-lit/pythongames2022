@@ -6,7 +6,8 @@ from logic import Easy, Medium, Hard
 # Step 2: Create app with flask(__name__)
 app = Flask(__name__)
 
-# Step 3: Add a new folder called templates and add a new html file called index.html into the folder
+# Step 3: Add a new folder called templates and 
+# add a new html file called index.html into the folder
 # Step 4: Create route for index.html
 @app.route('/')
 def index():

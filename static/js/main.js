@@ -2,8 +2,8 @@
 const statusDiv = document.querySelector('.status');
 const resetDiv = document.querySelector('.reset');
 const cellDivs = document.querySelectorAll('.game-cell');
-const playerScore = document.querySelector('.player-score');
-const computerScore = document.querySelector('.com-score');
+const playerOneScore = document.querySelector('.player-one-score');
+const playerTwoScore = document.querySelector('.player-two-score');
 const easyDiv = document.querySelector('.easy');
 const mediumDiv = document.querySelector('.medium');
 const hardDiv = document.querySelector('.hard');
@@ -11,10 +11,10 @@ const playerStartDiv = document.querySelector('.player-start');
 
 //game variables
 var game = {
-    scorePlayer: 0,
-    scoreComputer: 0,
-    Player: 'x',
-    Computer: 'o',
+    scorePlayer1: 0,
+    scorePlayer2: 0,
+    Player1: 'x',
+    Player2: 'o',
     gameIsLive: true,
     playerTurn: true,
     playerStarts: true,
@@ -34,21 +34,21 @@ const handleReset = (e) => {
 
     //Update Scores
     game['gameIsLive'] = true;
-    playerScore.innerHTML = `Player Score: ${game['scorePlayer']}`;
-    computerScore.innerHTML = `Computer Score: ${game['scoreComputer']}`;
+    playerScore.innerHTML = `Player 1 Score: ${game['scorePlayer1']}`;
+    playerOneScore.innerHTML = `Player 2 Score: ${game['scorePlayer2']}`;
     resetBoard();
 
     // 'x' always starts
     if(game['playerStarts']) {
         game['playerTurn'] = true;
-        game['Player'] = 'x';
-        game['Computer'] = 'o';
+        game['Player1'] = 'x';
+        game['Player2'] = 'o';
     }
 
     else {
         game['playerTurn'] = false;
-        game['Player'] = 'o';
-        game['Computer'] = 'x';
+        game['Player1'] = 'o';
+        game['Player2'] = 'x';
         calculateMove();
     }
 }
@@ -60,13 +60,13 @@ const handleCellClick = (e) => {
     const cellNo = positionToIndex(pos)
     
     // Return if cell is already occupied or game is not live
-    if(!game['gameIsLive'] || classList[2] == game['Player'] || classList[2] == game['Computer']) {
+    if(!game['gameIsLive'] || classList[2] == game['Player1'] || classList[2] == game['Player2']) {
         return;
     }
     
     if (game['playerTurn']) {
-        classList.add(game['Player']);
-        game['gameBoard'][cellNo] = game['Player']
+        classList.add(game['Player1']);
+        game['gameBoard'][cellNo] = game['Player1']
         game['playerTurn'] = !game['playerTurn']
         checkGameStatus()
     }
@@ -200,11 +200,11 @@ const handleWin = (mark,cell1, cell2, cell3) => {
     cellDivs[cell2].classList.add('won')
     cellDivs[cell3].classList.add('won')
 
-    if(game['Player'] == mark) {
-        game['scorePlayer'] = game['scorePlayer'] + 1
+    if(game['Player1'] == mark) {
+        game['Player1'] = game['Player1'] + 1
     }
     else {
-        game['scoreComputer'] = game['scoreComputer'] +  1
+        game['Player2'] = game['Player2'] +  1
     }
 }
 
@@ -276,8 +276,8 @@ function comMove() {
             return;
         }
         const classList = cellDivs[cellNo].classList
-        classList.add(game['Computer']);
-        game['gameBoard'][cellNo] = game['Computer']
+        classList.add(game['player2']);
+        game['gameBoard'][cellNo] = game['player2']
         game['playerTurn'] = !game['playerTurn']
         checkGameStatus()
     }
