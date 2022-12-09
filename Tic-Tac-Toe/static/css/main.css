@@ -1,4 +1,4 @@
-*{
+/* *{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -170,4 +170,41 @@ body {
         width: auto !important; 
     }
 
+} */
+
+body {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    /* align-content: center; */
+}
+
+table {
+    border-collapse: collapse;
+    border: 0px
+}
+
+td {
+    border: 1px solid black;
+    width: 105px;
+    height: 105px;
+    font-size: 50px;
+    text-align: center;
+}
+
+td>a {
+    font-size: 18px;
+}
+
+.butt {
+    border: 1px outset blue;
+    background-color: lightBlue;
+    height: 105px;
+    width: 105px;
+    cursor: pointer;
+}
+
+.butt:hover {
+    background-color: blue;
+    color: white;
 }
