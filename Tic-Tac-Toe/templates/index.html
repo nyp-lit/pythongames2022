@@ -113,9 +113,9 @@
 <body>
     <center>
 
-        <h1 style="align-content: center;">Tic Tac Toe</h1>
-        <hr style="color: blue;">
-        <hr style="color: olivedrab;">
+        <h1 class="title" style="align-content: center;">Tic Tac Toe</h1>
+        <hr>
+        <hr>
 
         {% if draw %}
         <div>
@@ -142,8 +142,9 @@
             </tr>
             {% endfor %}
         </table>
-        <div><a href="{{url_for('reset')}}" class="btn btn-danger">Reset Game</a></div>
-        <hr>
+        <br>
+        <div><a href="{{url_for('reset')}}" class="btn block">Reset Game</a></div>
+        <!-- <hr> -->
 
         <!-- <footer>
             <div class="container">
