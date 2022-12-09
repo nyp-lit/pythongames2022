@@ -1,18 +1,8 @@
-import os
-from flask import send_file
-import re
-import urllib.request
-from flask import Flask, flash, request, redirect, render_template,url_for,send_from_directory
-from werkzeug.utils import secure_filename
-import pathlib,os
 from flask import Flask, render_template, session, redirect, url_for
 from flask_session import Session
-#from tempfile import mkdtemp
-
 
 app = Flask(__name__)
 
-# app.config["SESSION_FILE_DIR"] = "\tmp" #this is a temp folder at heroku for temp data storing
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
@@ -35,7 +25,9 @@ def index():
     elif(winner[0] == False and winner[1] == "draw"):
         session["draw"] = True
      
-    return render_template("index.html", game=session["board"], turn=session["turn"],winnerFound=session["winner"],winner=session["turn"],draw=session["draw"])
+    return render_template("index.html", game=session["board"], 
+                           turn=session["turn"], winnerFound=session["winner"],
+                           winner=session["turn"],draw=session["draw"])
 
 @app.route("/play/<int:row>/<int:col>")
 def play(row, col):
@@ -56,7 +48,6 @@ def reset():
     return redirect(url_for("index"))
     
 def winnerFound(board):
-    #print("here at winner")
     #check rows
     for i in range(len(board)):
         if(board[i][0] == None):
