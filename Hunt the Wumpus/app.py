@@ -1,6 +1,5 @@
-from flask import Flask, render_template, session, request
+from flask import Flask, render_template, request
 from uuid import uuid4
-import random
 
 
 app = Flask(__name__)

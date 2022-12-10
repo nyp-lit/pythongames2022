@@ -1,14 +1,10 @@
 playing = true
 
 
-// generate cave
+// generate empty cave
 var cave = [];
 for (let i = 0, line ; i < h ; i++, cave.push(line)) {
     line = [];
-    // 0 - free
-    // 1 - pit
-    // 2 - wumpus
-    // 3 - gold
     for (let j = 0; (j < w); j++) {
         line.push(null);
     }
@@ -42,26 +38,25 @@ function updown(index) {
 }
 
 function adjacent(x, y) {
-    return [cave[updown(y-1)][x],   //above
-            cave[updown(y+1)][x],   //below
-            cave[y][leftright(x-1)],   //left
+    return [cave[updown(y-1)][x],       //above
+            cave[updown(y+1)][x],       //below
+            cave[y][leftright(x-1)],    //left
             cave[y][leftright(x+1)]];   //right
 }
 
 function placing(item) {
-    var x = 0, y = 0
-    while (adjacent(x, y).includes("Player") || cave[y][x] !== null) {
-        x = randint(w);
-        y = randint(h);
+    do {
+        var x = randint(w);
+        var y = randint(h);
         console.log(x, y, item);
-    }
+    } while (adjacent(x, y).includes("Player") || cave[y][x] !== null);
     cave[y][x] = item
 }
 // randomise location
-placing('Pit')  //1st pit
-placing('Pit') //2nd pit
-placing('Wumpus')  //wupus
-placing('Gold')  //gold
+placing('Pit')
+placing('Pit')      //2 pits
+placing('Wumpus')
+placing('Gold')
 console.log(cave);
 
 function end(result) {              //result = 'win' or 'lose'

@@ -20,15 +20,24 @@ h1 {
     line-height: 100%;
 }
 
-.header {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+button {
+    background-color: rgb(100, 10, 10);
+    color: rgb(240, 220, 180);
+    cursor: pointer;
 }
 
-.bottom {
+.play {
+    padding: 10px 15px 10px 15px;
+    font-weight: 600;
+    font-size: large;
+    margin: 5px;
+}
+
+header {
+    text-align: center;
+}
+
+footer {
     margin-top: auto;
     display: flex;
     flex-direction: column;
@@ -36,7 +45,7 @@ h1 {
     justify-content: center;
 }
 
-.main {
+main {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -59,16 +68,8 @@ h1 {
     flex-direction: column;
 }
 
-.play {
-    padding: 10px 15px 10px 15px;
-    background-color: rgb(100, 10, 10);
-    color: rgb(240, 220, 180);
-    border: none;
-    font-weight: 600;
-    font-family: 'Eczar', 'serif';
-    font-size: large;
-    cursor: pointer;
-    margin: 5px;
+.game {
+    margin: 3vh;
 }
 
 .size_input {
@@ -80,61 +81,36 @@ h1 {
     width: 43px;
 }
 
-.line {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
 .room {
     width: 30px;
     height: 30px;
-    border: 1px dotted rgb(100, 10, 10);
+    border: 1px dotted;
     margin: 3px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    display: inline-block;
 }
 
 .curr_room {
-    background:rgb(240, 220, 180);
-    border: 2px solid rgb(100, 10, 10);
+    background: yellow;
+    border: 2px solid;
+    width: 28px;
+    height: 28px;
+}
+
+svg {
+    display: block;
+    margin: auto auto;
 }
 
 .win, .lose {
     display: none;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     text-align: center;
 }
 
-.win h4, .lose h4 {
-    line-height: 100%;
+h4 {
     margin: 0;
 }
 
 .controls {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    justify-items: center;
-    align-content: center;
-    padding: 10px 15px 10px 15px;
-}
-
-.up, .left, .down, .right {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    background: rgb(100, 10, 10);
-    color: rgb(240, 220, 180);
-    padding: 8px 24px 8px 24px;
-    margin: 3px;
     text-align: center;
-    cursor: pointer;
-    font-size: small;
-    align-items: center;
+    padding: 10px 15px 10px 15px;
 }
