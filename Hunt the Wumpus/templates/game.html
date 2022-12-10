@@ -4,56 +4,53 @@
     var w = {{width}}, h = {{height}};
 </script>
 <script src="{{ url_for('static', filename='scripts/main.js') }}"></script>
-<main>
 
-    <div class="win">
-        <h4>Congratulations! You won!</h4>
-        <a href='/'><button class='play'>Play again</button></a>
-    </div>
+<div class="win">
+    <h4>Congratulations! You won!</h4>
+    <a href='/'><button class='play'>Play again</button></a>
+</div>
 
-    <div class="lose">
-        <h4>Game Over!</h4>
-        <a href='/'><button class='play'>Play again</button></a>
-    </div>
+<div class="lose">
+    <h4>Game Over!</h4>
+    <a href='/'><button class='play'>Play again</button></a>
+</div>
 
-    <div class="game">
-        {% for i in range(height) %}
+<div class="game">
+    {% for i in range(height) %}
 
-            <div class="line">
+        <div class="line">
 
-            {% for j in range(width) %}
+        {% for j in range(width) %}
 
-                {% if i == 0 and j == 0 %}
+            {% if i == 0 and j == 0 %}
 
-                    <div class="room curr_room" x="{{j}}" y="{{i}}"></div>
+                <div class="room curr_room" id="{{j}}-{{i}}"></div>
 
-                {% else %}
+            {% else %}
 
-                    <div class="room" x="{{j}}" y="{{i}}"></div>
+                <div class="room" id="{{j}}-{{i}}"></div>
 
-                {% endif %}
-
-            {% endfor %}
-
-            </div>
+            {% endif %}
 
         {% endfor %}
-    </div>
 
-    <div class="controls">
-        <button class="up"><i data-feather="arrow-up"></i></button>
-        <div>
-            <button class="left"><i data-feather="arrow-left"></i></button>
-            <button class="down"><i data-feather="arrow-down"></i></button>
-            <button class="right"><i data-feather="arrow-right"></i></button>
         </div>
-        <!--<div class="arrow"><i data-feather="chevrons-up"></i></div>-->
+
+    {% endfor %}
+</div>
+
+<div class="controls">
+    <button id="up"><i data-feather="arrow-up"></i></button>
+    <div>
+        <button id="left"><i data-feather="arrow-left"></i></button>
+        <button id="down"><i data-feather="arrow-down"></i></button>
+        <button id="right"><i data-feather="arrow-right"></i></button>
     </div>
+    <!--<div class="arrow"><i data-feather="chevrons-up"></i></div>-->
+</div>
 
-    <script>
-        feather.replace()
-    </script>
-
-</main>
+<script>
+    feather.replace()
+</script>
 
 {% endblock %}

@@ -45,49 +45,43 @@ function adjacent(x, y) {
 }
 
 function placing(item) {
+    var x, y
     do {
-        var x = randint(w);
-        var y = randint(h);
+        x = randint(w);
+        y = randint(h);
         console.log(x, y, item);
     } while (adjacent(x, y).includes("Player") || cave[y][x] !== null);
-    cave[y][x] = item
+    cave[y][x] = item;
 }
 // randomise location
-placing('Pit')
-placing('Pit')      //2 pits
-placing('Wumpus')
-placing('Gold')
+placing('Pit');
+placing('Pit');      //2 pits
+placing('Wumpus');
+placing('Gold');
 console.log(cave);
-
-function end(result) {              //result = 'win' or 'lose'
-    $('.' + result).show("fast")
-    playing = false
-}
-
 
 
 function move(direction) {
     if (direction === 'left') {
-        coordinates[0] = leftright(coordinates[0] - 1)
+        coordinates[0] = leftright(coordinates[0] - 1);
     } else if (direction === 'up') {
-        coordinates[1] = updown(coordinates[1] - 1)
+        coordinates[1] = updown(coordinates[1] - 1);
     } else if (direction === 'down') {
-        coordinates[1] = updown(coordinates[1] + 1)
+        coordinates[1] = updown(coordinates[1] + 1);
     } else if (direction === 'right') {
-        coordinates[0] = leftright(coordinates[0] + 1)
+        coordinates[0] = leftright(coordinates[0] + 1);
     }
     console.log(coordinates);
     let location = cave[coordinates[1]][coordinates[0]];
 
     //css
     $(".curr_room").removeClass("curr_room");
-    var room = $(".room[x='" + coordinates[0] + "'][y='" + coordinates[1] + "']");
+    var room = $("#"+ coordinates[0] + "-" + coordinates[1]);
     room.empty();
     room.addClass("curr_room");
 
     //surroundings
     var adj = adjacent(coordinates[0], coordinates[1])
-
     //win lose and adjacency check
     if (location === 'Pit') {                               //pit lose
         room.append("<i data-feather='x-circle'></i>");
@@ -99,23 +93,29 @@ function move(direction) {
         room.append("<i data-feather='award'></i>");
         end('win');
     } else if (adj.includes('Pit')) {                       //pit warning
-        room.append("<i data-feather='wind'></i>")
+        room.append("<i data-feather='wind'></i>");
     } else if (adj.includes('Wumpus')) {                       //wampus warning
-        room.append("<i data-feather='alert-triangle'></i>")
+        room.append("<i data-feather='alert-triangle'></i>");
     } else if (adj.includes('Gold')) {                       //gold warning
-        room.append("<i data-feather='star'></i>")
+        room.append("<i data-feather='star'></i>");
     }
 
-    feather.replace() // replace data-feather attribute with corresponding icon
+    feather.replace(); // replace data-feather attribute with corresponding icon
+}
+
+
+function end(result) {              //result = 'win' or 'lose'
+    $('.' + result).show("fast");
+    playing = false;
 }
 
 
 $(document).ready(function(){
     //html arrow buttons
-    $('.left').click(() => {move('left');})
-    $('.right').click(() => {move('right');});
-    $('.up').click(() => {move('up');});
-    $('.down').click(() => {move('down');});
+    $('#left').click(() => {move('left');});
+    $('#right').click(() => {move('right');});
+    $('#up').click(() => {move('up');});
+    $('#down').click(() => {move('down');});
     // detecting arrow keys
     $(document).keydown(function(key) {
         if (key.keyCode == 37) {            //left
