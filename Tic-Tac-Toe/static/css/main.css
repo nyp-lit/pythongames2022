@@ -1,8 +1,5 @@
 body {
     background-color: #FFBF00;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 table {
@@ -43,13 +40,14 @@ h1.win {
     color: green;
 }
 
-h1.title {
-    font-size: 100px;
-    align-content: center;
-}
-
 h1 {
     font-size: 100px;
+    text-align: center;
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .block {
@@ -61,5 +59,6 @@ h1 {
     padding: 14px 28px;
     font-size: 30px;
     cursor: pointer;
-    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
