@@ -1,0 +1,17 @@
+
+.s1 {
+    height: 100px; 
+    width: 100px; 
+    background-color: grey;
+    
+}
+
+td {
+    height: 100px; 
+    width: 100px; 
+    background-color: grey;
+}
+table, td, tr {
+    border: 2px solid black;
+    border-collapse: collapse;
+}
