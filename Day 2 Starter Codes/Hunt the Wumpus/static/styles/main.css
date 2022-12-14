@@ -1,0 +1,85 @@
+html, body {
+    margin: 0;
+    font-family: 'Eczar', 'serif';
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(240, 220, 180);
+    color: rgb(100, 10, 10);
+    text-align: center;
+}
+
+a {
+    color: rgb(100, 10, 10);
+    text-decoration-style: wavy;
+}
+
+button {
+    background-color: rgb(100, 10, 10);
+    color: rgb(240, 220, 180);
+    cursor: pointer;
+}
+
+.play {
+    padding: 10px 15px 10px 15px;
+    font-weight: 600;
+    font-size: large;
+    margin: 5px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+.info {
+    width: 60%;
+    padding: 30px;
+    background-color: rgb(100, 10, 10);
+    color:rgb(240, 220, 180);
+}
+
+.setup {
+    text-align: center;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.game {
+    margin: 3vh;
+}
+
+.size_input {
+    padding: 10px 15px 10px 15px;
+    border: 1px solid rgb(100, 10, 10);
+    color: rgb(100, 10, 10);
+    font-size: large;
+    width: 43px;
+}
+
+.room {
+
+}
+
+.curr_room {
+
+}
+
+svg {
+
+}
+
+.win, .lose {
+
+}
+
+h4 {
+
+}
+
+.controls {
+
+}
