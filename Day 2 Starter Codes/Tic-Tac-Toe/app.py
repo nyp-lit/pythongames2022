@@ -12,14 +12,24 @@ def index():
     return render_template("index.html")
 
 @app.route("/play/<int:row>/<int:col>")
-def play():
+def play(row, col):
     return redirect(url_for("index"))
 
 @app.route("/reset")
 def reset():
     return redirect(url_for("index"))
     
-# def winnerFound():
-    
+# def winnerFound(board):
+    #check rows
+        
+    #check cols
+        
+    #check diagonals
+        
+    #check if game is drawn
+
+    #game is drawn since there is no winner 
+    #and all boxes are filled
+
 if __name__ == "__main__":
     app.run(debug=True)

@@ -9,7 +9,7 @@ Session(app)
 
 @app.route("/")
 def index():
-    if "board" not in session:
+    if ("board" not in session):
         session["board"] = [[None, None, None], [None, None, None], [None, None, None]]
         session["turn"] = "X"
         session["winner"] = False
@@ -17,7 +17,7 @@ def index():
 
     winner = winnerFound(session["board"])
 
-    if(winner[0] == True):
+    if (winner[0] == True):
         session["winner"] = True
         session["turn"] = winner[1]
         print("winner found",session["winner"], session["turn"])
@@ -25,14 +25,15 @@ def index():
     elif(winner[0] == False and winner[1] == "draw"):
         session["draw"] = True
      
-    return render_template("index.html", game=session["board"], 
-                           turn=session["turn"], winnerFound=session["winner"],
-                           winner=session["turn"],draw=session["draw"])
+    return render_template("index.html", game = session["board"], 
+                           turn = session["turn"], winnerFound = session["winner"],
+                           winner = session["turn"],draw = session["draw"])
 
 @app.route("/play/<int:row>/<int:col>")
 def play(row, col):
     session["board"][row][col] = session["turn"]
-    if(session["turn"] == "X"):
+    
+    if (session["turn"] == "X"):
         session["turn"] = "O"
     else:
         session["turn"] = "X"
@@ -50,32 +51,36 @@ def reset():
 def winnerFound(board):
     #check rows
     for i in range(len(board)):
-        if(board[i][0] == None):
+        if (board[i][0] == None):
             break
         if (board[i][0] == board[i][1] and  board[i][0] == board[i][2]):
             return [True, board[i][0]]
+        
     #check cols
     for i in range(len(board)):
-        if(board[0][i] == None):
+        if (board[0][i] == None):
             break
         if (board[0][i] == board[1][i] and board[0][i] == board[2][i]):
             return [True, board[0][i]]
+        
     #check diagonals
-    if(board[0][0] == board[1][1] and board[0][0] == board[2][2]):
-        if(board[0][0] != None):
+    if (board[0][0] == board[1][1] and board[0][0] == board[2][2]):
+        if (board[0][0] != None):
             return [True, board[0][0]]
-    #check diagonals
-    if(board[2][0] == board[1][1] and board[2][0] == board[0][2]):
-        if(board[2][0] != None):
+
+    if (board[2][0] == board[1][1] and board[2][0] == board[0][2]):
+        if (board[2][0] != None):
             return [True, board[2][0]]
+        
     #check if game is drawn
     for i in range(len(board)):
         for j in range(len(board)):
-            if(board[i][j] == None):
+            if (board[i][j] == None):
                 return [False, board[0][0]]
 
     #game is drawn since there is no winner 
     #and all boxes are filled
     return [False, "draw"]
+
 if __name__ == "__main__":
     app.run(debug=True)

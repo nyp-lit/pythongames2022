@@ -11,6 +11,7 @@ td {
     border: 1px solid black;
     width: 250px;
     height: 250px;
+    font-size: 50px;
     text-align: center;
 }
 
@@ -20,9 +21,10 @@ td>a {
 
 .butt {
     border: 1px outset blue;
-    background-color: lightBlue;
+    background-color: lightblue;
     height: 250px;
     width: 250px;
+    font-size: 50px;
     cursor: pointer;
 }
 
